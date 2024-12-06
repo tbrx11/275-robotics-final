@@ -3,7 +3,9 @@ Name of your project
 
 ## Team Members and Roles
 Tanay Patel - Implemented manipulator arm and compiled simulation
+
 Mark Shetyn - Implemented robot vision and neural network
+
 Charles Khan - Implemented mobile robot path planning and differential drive
 
 Describe the roles and responsibilities of each member of your team. For example: Did they help with the
