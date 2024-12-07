@@ -2,7 +2,7 @@
 Name of your project
 
 ## Team Members and Roles
-Tanay Patel - Implemented manipulator arm and compiled simulation
+Tanay Patel - Implemented manipulator arm and compiled and debugged simulation
 
 Mark Shetyn - Implemented robot vision and neural network
 
@@ -14,11 +14,21 @@ implementation to gather results or data? Did they help plot the data and write 
 
 
 ## Introduction
-What is the motivation for choosing this problem? What ECSE275 robotics concepts are you exploring in
-this problem? Summarize the final deliverable (i.e. what you will eventually demo)
+Our goal was to create a surgery assistant robot that could pick up requested objects from a table for a surgeon who is operating on a patient or has their hands full. We struggled to find a good database with images and models of medical equipment so we decided to put different fruits on cubes for the sake of concept. In this project, we will be exploring many concepts from ECSE 275, such as mobile robotics path generation, off-center kinematics, inverse kinematics, trajectory generation, robot vision, and neural networks. In the end, we expect our robot to be able to navigate to a table, find a user-inputted object, pick up the object, transport the object to another table, and drop the object off on the table. The robot should be able to do this as many times as the user requests or until it runs out of objects to pick up. Furthermore, the position of the objects on the tables will randomized each time the robot goes to pick up a new one, as it is likely that things shift around in the real world.
 
 
 ## Approach
+The system consisted of three main parts, the mobile PioneerP3DX robot, the manipulator Franka robot, and a vision sensor for robot vision. 
+
+### PioneerP3DX
+
+### Franka
+The Franka manipulator model was implemented using the CoppeliaSim template for it. It was controlled with an inverse kinematics environment using a CoppeliaSim add-on. Inverse kinematics were used to move the robot to a specified point with respect to the PioneerP3DX robot base. The first big question in the design of this section was whether to use a constant velocity trajectory or a minimum jerk trajectory. A constant velocity trajectory would lead to more predictable movement for the robot from an outside view, as it moves linearly to its target. A minimum jerk trajectory, however, was better for our applications. Our robot was expected to pick up an object from the table and a minimum jerk trajectory led to a much smoother interaction with the object on the table. (INSERT GIFF??)
+
+### Robot Vision
+
+
+
 What are the main “building blocks” of your system? How did you implement each of them? Why did you
 choose to implement them this way? How did the ECSE 275 concepts you learned inform your approach to
 each part? What experiments did you conduct and what data did you gather to measure the performance
