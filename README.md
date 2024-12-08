@@ -2,7 +2,7 @@
 Name of your project
 
 ## Team Members and Roles
-Tanay Patel - Implemented manipulator arm and compiled and debugged simulation
+Tanay Patel - Implemented manipulator arm, compiled and debugged simulation
 
 Mark Shetyn - Implemented robot vision and neural network
 
@@ -46,5 +46,7 @@ did not, then what could have been done instead (offer some suggestions).
 
 
 ## Conclusion
+Using premade models from CoppleiaSim, we created a robot that could pick up a specified fruit block and drop it on another table. 
+
 Summarize what you did, and the result that you achieved. Discuss how the work can be further developed
 or improved in the future.
