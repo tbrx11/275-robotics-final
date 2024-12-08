@@ -5,7 +5,7 @@ Tanay Patel - Implemented manipulator arm, compiled and debugged simulation. Wro
 
 Mark Shetyn - Implemented robot vision and neural network. Wrote approach and results section of GitHub page
 
-Charles Khan - Implemented mobile robot path planning and differential drive. Wrote approach and results section of GitHub page
+Charles Kahn - Implemented mobile robot path planning and differential drive. Wrote approach and results section of GitHub page
 
 
 ## Introduction
