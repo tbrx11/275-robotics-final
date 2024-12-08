@@ -5,7 +5,7 @@ Tanay Patel - Implemented manipulator arm, compiled and debugged simulation. Wro
 
 Mark Shetyn - Implemented robot vision and neural network. Wrote approach and results section of GitHub page
 
-Charles Khan - Implemented mobile robot path planning and differential drive. Wrote approach and results section of GitHub page
+Charles Kahn - Implemented mobile robot path planning and differential drive. Wrote approach and results section of GitHub page
 
 
 ## Introduction
@@ -16,7 +16,15 @@ Our goal was to create a surgery assistant robot that could pick up requested ob
 The system consisted of three main parts, the mobile PioneerP3DX robot, the manipulator Franka robot, and a vision sensor for robot vision. 
 
 ### PioneerP3DX
-The PioneerP3DX mobile robot model was implemented using the CoppeliaSim template for it.
+The PioneerP3DX mobile robot model was implemented initially using the CoppeliaSim template for it. Its routine was then built using CoppeliaSim's path generation library for direction and a Jacobian-based differential-drive control system.
+
+The system's "state" was controlled by a series of variables which would then be polled by routines whenever needed. This was because the system performed various tasks at specific points, while it would be commanded to perform tasks in certain ways at any time. To accomplish this, we added a series of functions that Python scripts could access, which would alter the value of certain state variables, and then the actuation and sensing routines would respond to the altered value once those routines were called.
+
+On initialization, the system would generate two target points to act as endpoints for the robot's path if the robot was commanded to go to table 1 or table 2 respectively. This allowed the robot to move to the correct points no matter where the tables were placed. Unfortunately, time constrainsts meant that we couldn't have the path avoid intrinsic obstacles, so the tables had to be placed in a way that a linear path between them would not go through the tables.
+
+After the target points had been generated, the robot would then go into its sensing phase, in which it generated a path if no path existed that met the current criteria (such as on init), with its starting point at the robot's current position and its endpoint at the current target table's respective target point. To ensure that the robot would be oriented towards the table, the function also generated an intermediate point located a certain amount away from the target point on the table's x axis. This was to ensure that as soon as the robot reached a table, the camera could view all objects on it for the duration of the processing time, and then the objects would still be in roughly the same position as they were when processing started.
+
+The effect of this is that a Python script could call changeTable() whenever it needed the robot to move to a new table, and then it would generate a new path from the current table to the new one, with a third point it would always hit in the middle that allowed the robot to reorient itself toward the new table's x axis. In case the robot could not reach some object, another function also existed to make the robot move toward a point offset along the table's y axis, but we did not end up using this function for the presentation.
 
 ### Franka
 The Franka manipulator model was implemented using the CoppeliaSim template for it. It was controlled with an inverse kinematics environment using a CoppeliaSim add-on. Inverse kinematics were used to move the robot to a specified point with respect to the PioneerP3DX robot base. The first big question in the design of this section was whether to use a constant velocity trajectory or a minimum jerk trajectory. A constant velocity trajectory would lead to more predictable movement for the robot from an outside view, as it moves linearly to its target. A minimum jerk trajectory, however, was better for our applications. Our robot was expected to pick up an object from the table and a minimum jerk trajectory led to a much smoother interaction with the object on the table. To pick up and drop objects, we used the setObjectParent() function in CoppeliaSim to fake the actual picking up of a cube. This was because of the difficulty of picking up the objects with an actual gripper. 
@@ -41,6 +49,13 @@ uploading it to YouTube. It should go over any quantitative data you might have 
 presented as a table, or a graphical plot. Also, talk about the performance qualitatively. Then discuss if
 the implementation met the team’s pre-determined metrics of success. If it did, why was it successful? If it
 did not, then what could have been done instead (offer some suggestions).
+
+The robot ended up performing all the basic tasks we set out for it to complete: it would sense the locations of all the objects present on the "input" table, determine the nature of said objects, pick up the object of the requested nature, and move the object to the "output" table.
+
+Video Demonstration:
+[Inset here]
+
+As for the computer vision section, we found that the model could predict the name of a fruit with an average accuracy of around 99.4%. 
 
 
 ## Conclusion
