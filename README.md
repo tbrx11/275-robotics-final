@@ -1,4 +1,5 @@
 # Mobile Manipulator Vision-Based Surgery Assistant
+Link to keras model: https://drive.google.com/file/d/1i00Yo24tktoG5qcwhM39OOEOX_g36iXb/view?usp=drive_link 
 
 ## Team Members and Roles
 Tanay Patel - Implemented manipulator arm, compiled and debugged simulation. Wrote introduction, approach, and conclusion of GitHub page
