@@ -58,7 +58,7 @@ did not, then what could have been done instead (offer some suggestions).
 The robot ended up performing all the basic tasks we set out for it to complete: it would sense the locations of all the objects present on the "input" table, determine the nature of said objects, pick up the object of the requested nature, and move the object to the "output" table.
 
 Video Demonstration:
-[Inset here]
+[![Robot Demo](https://img.youtube.com/vi/TGcFJrstmKc/0.jpg)](https://www.youtube.com/watch?v=TGcFJrstmKc)
 
 As for the computer vision section, we found that the model could predict the name of a fruit with an average accuracy of around 99.4%. 
 
