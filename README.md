@@ -40,21 +40,10 @@ If the model's prediction matched the fruit specified by the user, the system ca
 ### Compilation
 A Python script was created to run all of the individual parts together. The script first asked the user to pick a fruit. Then it started the simulation and allowed the PioneerP3DX to make its way to the object table. It checked whether the robot was at its desired location by calling a getter function in the PioneerP3DX code. Once it reached the table, the Python code took a look at the vision sensor data and ran it through the model to table each cube. The centroids of each cube were found. The centroid of the requested object was sent to a function in the Frank code that moved the tip of the robot to a specified pose. Once it got there, another function was called to attach the object to the robot. Once the Franka moved back to its ideal position, a PioneerP3DX function was called that told the robot to move to the other table. Once there, the Franka dropped the object at a specified drop-point that was put on the table. The code closed by moving the drop-point over a bit and removing the dropped-off fruit from the list of fruits the user could select. The code asks if the user would like to continue and prompts them to pick another fruit as the PioneerP3DX makes its way back to the object table.
 
-What are the main “building blocks” of your system? How did you implement each of them? Why did you
-choose to implement them this way? How did the ECSE 275 concepts you learned inform your approach to
-each part? What experiments did you conduct and what data did you gather to measure the performance
-of the system or define success? Include a summary flow chart of how different components in your
-implementation interface with each other. What messages or data is passed between components?
+![Note Dec 9, 2024](https://github.com/user-attachments/assets/a89ee093-c962-4c1a-8191-3bac2c86f92c)
 
 
 ## Results
-The results section should contain images of your final implementation, GIFs of some part of your system
-in action. You should embed mp4 videos of your working implementation into the page by first
-uploading it to YouTube. It should go over any quantitative data you might have gathered which can be
-presented as a table, or a graphical plot. Also, talk about the performance qualitatively. Then discuss if
-the implementation met the team’s pre-determined metrics of success. If it did, why was it successful? If it
-did not, then what could have been done instead (offer some suggestions).
-
 The robot ended up performing all the basic tasks we set out for it to complete: it would sense the locations of all the objects present on the "input" table, determine the nature of said objects, pick up the object of the requested nature, and move the object to the "output" table.
 
 Video Demonstration:
